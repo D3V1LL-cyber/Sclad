@@ -22,5 +22,7 @@ namespace Склад.Models
         public int SupplierId { get; set; }
         [ForeignKey("SupplierId")]
         public virtual Supplier Supplier { get; set; }
+
+        public ICollection<Transaction> Transactions { get; set; }
     }
 }
