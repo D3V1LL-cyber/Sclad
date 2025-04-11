@@ -14,15 +14,10 @@ namespace Склад.Models
         [Required]
         public decimal Price { get; set; }
         public int Quantity { get; set; }
-        
+
         public int CategoryId { get; set; }
-        [ForeignKey("CategoryId")]
-        public virtual Category Category { get; set; }
-
+        public Category? Category { get; set; }
         public int SupplierId { get; set; }
-        [ForeignKey("SupplierId")]
-        public virtual Supplier Supplier { get; set; }
-
-        public ICollection<Transaction> Transactions { get; set; }
+        public Supplier? Supplier { get; set; }
     }
 }

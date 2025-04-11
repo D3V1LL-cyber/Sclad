@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Склад.Data;
 
@@ -10,9 +11,11 @@ using Склад.Data;
 namespace Склад.Data.Migrations
 {
     [DbContext(typeof(ApplicationDatabaseContext))]
-    partial class ApplicationDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20250411054524_ModelChange2")]
+    partial class ModelChange2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,18 +40,6 @@ namespace Склад.Data.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = 1,
-                            Name = "Electronics"
-                        },
-                        new
-                        {
-                            CategoryId = 2,
-                            Name = "Books"
-                        });
                 });
 
             modelBuilder.Entity("Склад.Models.Product", b =>
@@ -83,35 +74,6 @@ namespace Склад.Data.Migrations
                     b.HasIndex("SupplierId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            ProductId = 1,
-                            CategoryId = 1,
-                            Name = "Laptop",
-                            Price = 1200.00m,
-                            Quantity = 2,
-                            SupplierId = 1
-                        },
-                        new
-                        {
-                            ProductId = 2,
-                            CategoryId = 1,
-                            Name = "Smartphone",
-                            Price = 800.00m,
-                            Quantity = 2,
-                            SupplierId = 1
-                        },
-                        new
-                        {
-                            ProductId = 3,
-                            CategoryId = 2,
-                            Name = "The Lord of the Rings",
-                            Price = 25.00m,
-                            Quantity = 2,
-                            SupplierId = 2
-                        });
                 });
 
             modelBuilder.Entity("Склад.Models.Supplier", b =>
@@ -134,20 +96,6 @@ namespace Склад.Data.Migrations
                     b.HasKey("SupplierId");
 
                     b.ToTable("Suppliers");
-
-                    b.HasData(
-                        new
-                        {
-                            SupplierId = 1,
-                            Email = "john.doe@acmecorp.com",
-                            Name = "Acme Corp"
-                        },
-                        new
-                        {
-                            SupplierId = 2,
-                            Email = "jane.smith@betainc.com",
-                            Name = "Beta Inc"
-                        });
                 });
 
             modelBuilder.Entity("Склад.Models.Product", b =>
