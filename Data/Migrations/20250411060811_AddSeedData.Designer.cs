@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Склад.Data;
 
@@ -10,9 +11,11 @@ using Склад.Data;
 namespace Склад.Data.Migrations
 {
     [DbContext(typeof(ApplicationDatabaseContext))]
-    partial class ApplicationDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20250411060811_AddSeedData")]
+    partial class AddSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,7 +94,7 @@ namespace Склад.Data.Migrations
                             CategoryId = 1,
                             Name = "Laptop",
                             Price = 1200.00m,
-                            Quantity = 2,
+                            Quantity = 0,
                             SupplierId = 1
                         },
                         new
@@ -100,7 +103,7 @@ namespace Склад.Data.Migrations
                             CategoryId = 1,
                             Name = "Smartphone",
                             Price = 800.00m,
-                            Quantity = 2,
+                            Quantity = 0,
                             SupplierId = 1
                         },
                         new
@@ -109,7 +112,7 @@ namespace Склад.Data.Migrations
                             CategoryId = 2,
                             Name = "The Lord of the Rings",
                             Price = 25.00m,
-                            Quantity = 2,
+                            Quantity = 0,
                             SupplierId = 2
                         });
                 });
