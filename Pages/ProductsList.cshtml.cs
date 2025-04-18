@@ -14,7 +14,7 @@ namespace Склад.Pages
         }
         public List<Product> Products { get; set; }
 
-        public async Task OnGet()
+        public void OnGet()
         {
             Products = new List<Product>
             {

@@ -20,6 +20,7 @@
                     <td>@product.Name</td>
                     <td>@product.Price</td>
                     <td>@product.Quantity</td>
+                <a asp-page="./Edit" asp-route-id="@product.ProductId">Редактировать</a>
                 </tr>
             }
     </tbody>
