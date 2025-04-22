@@ -11,7 +11,7 @@ using Склад.Data;
 
 namespace Склад.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDatabaseContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250404052926_Transaction")]
     partial class Transaction
     {
