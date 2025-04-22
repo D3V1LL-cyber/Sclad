@@ -10,7 +10,7 @@ using Склад.Data;
 
 namespace Склад.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDatabaseContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250411054524_ModelChange2")]
     partial class ModelChange2
     {

@@ -10,7 +10,7 @@ using Склад.Data;
 
 namespace Склад.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDatabaseContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20250411061558_SeedData2")]
     partial class SeedData2
     {

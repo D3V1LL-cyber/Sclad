@@ -7,9 +7,9 @@ namespace Склад.Pages
 {
     public class EditPageModel : PageModel
     {
-        private readonly ApplicationDatabaseContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public EditPageModel(ApplicationDatabaseContext context)
+        public EditPageModel(ApplicationDbContext context)
         {
             _context = context;
         }

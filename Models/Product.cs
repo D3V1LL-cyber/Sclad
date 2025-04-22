@@ -7,7 +7,7 @@ namespace Склад.Models
         [Key]
         public int ProductId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите название товара")]
         [StringLength(100)]
         public string Name { get; set; }
 
