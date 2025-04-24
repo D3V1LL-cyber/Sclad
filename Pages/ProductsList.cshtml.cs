@@ -21,10 +21,10 @@ namespace Склад.Pages
 
         public IActionResult OnPostDelete(int id)
         {
-            var dish = _context.Products.Find(id);
-            if (dish != null)
+            var product = _context.Products.Find(id);
+            if (product != null)
             {
-                _context.Products.Remove(dish);
+                _context.Products.Remove(product);
                 _context.SaveChanges();
             }
             return RedirectToPage();
