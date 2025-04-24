@@ -16,6 +16,18 @@ namespace Склад.Pages
 
         public void OnGet()
         {
+            Products = _context.Products.ToList();
+        }
+
+        public IActionResult OnPostDelete(int id)
+        {
+            var dish = _context.Products.Find(id);
+            if (dish != null)
+            {
+                _context.Products.Remove(dish);
+                _context.SaveChanges();
+            }
+            return RedirectToPage();
         }
 
     }

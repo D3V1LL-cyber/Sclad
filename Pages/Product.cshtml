@@ -1,0 +1,42 @@
+﻿@page
+@model Склад.Pages.ProductModel
+@{
+}
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+
+    <input type="hidden" asp-for="Product.ProductId" />
+
+    <div class="form-group">
+        <label asp-for="Product.Name">Название</label>
+        <input asp-for="Product.Name" type="text" class="form-control" />
+        <span asp-validation-for="Product.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Product.Price">Цена</label>
+        <input asp-for="Product.Price" type="text" class="form-control" />
+        <span asp-validation-for="Product.Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Product.Quantity">Количество</label>
+        <input asp-for="Product.Quantity" type="text" class="form-control" />
+        <span asp-validation-for="Product.Quantity" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Product.CategoryId">Id категории</label>
+        <input asp-for="Product.CategoryId" type="text" class="form-control" />
+        <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Product.SupplierId">Id поставщика</label>
+        <input asp-for="Product.SupplierId" type="text" class="form-control" />
+        <span asp-validation-for="Product.SupplierId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
