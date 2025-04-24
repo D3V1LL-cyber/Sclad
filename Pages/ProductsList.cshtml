@@ -16,15 +16,15 @@
             <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title">@product.Name</h5>
-                    <p class="card-text">Грамм: @product.Price</p>
-                    <p class="card-text">Грамм: @product.Quantity</p>
-                    <p class="card-text">Цена: @product.CategoryId</p>
-                    <p class="card-text">Цена: @product.SupplierId</p>
+                    <p class="card-text">Цена: @product.Price</p>
+                    <p class="card-text">Количество: @product.Quantity</p>
+                    <p class="card-text">Id категории: @product.CategoryId</p>
+                    <p class="card-text">Id поставщика: @product.SupplierId</p>
                    
                 </div>
                 <div class="card-footer d-flex justify-content-between">
                     <a href="@Url.Page("Product", new { id = product.ProductId })" class="btn btn-warning">Изменить</a>
-                    <a href="javascript:void(0);" class="btn btn-danger" onclick="if (confirm('Are you sure you want to delete?')) { window.location.href = '@Url.Page("ProductDelete", new { id = product.ProductId })'; }">Удалить</a>
+                    <a href="javascript:void(0);" class="btn btn-danger" onclick="if (confirm('Are you sure you want to delete?')) { window.location.href = '@Url.Page("DeleteProduct", new { id = product.ProductId })'; }">Удалить</a>
                 </div>
             </div>
         </div>
