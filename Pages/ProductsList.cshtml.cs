@@ -21,7 +21,7 @@ namespace Склад.Pages
 
         public IActionResult OnPostDelete(int id)
         {
-            var product = _context.Products.Find(id);
+            var product = _context.Products.FirstOrDefault(p => p.ProductId == id);
             if (product != null)
             {
                 _context.Products.Remove(product);
