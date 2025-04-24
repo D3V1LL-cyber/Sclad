@@ -13,7 +13,5 @@ namespace Склад.Models
 
         [EmailAddress]
         public string Email { get; set; }
-
-        public virtual ICollection<Product> Products { get; set; }
     }
 }
