@@ -24,7 +24,9 @@
                 </div>
                 <div class="card-footer d-flex justify-content-between">
                     <a href="@Url.Page("Product", new { id = product.ProductId })" class="btn btn-warning">Изменить</a>
-                    <a href="javascript:void(0);" class="btn btn-danger" onclick="if (confirm('Are you sure you want to delete?')) { window.location.href = '@Url.Page("DeleteProduct", new { id = product.ProductId })'; }">Удалить</a>
+                    <form asp-page-handler="Delete" method="post" asp-route-id="@product.ProductId">
+                        <button class="btn btn-danger" onclick="return confirm('Вы уверны?')">Удалить</button>
+                    </form>
                 </div>
             </div>
         </div>
