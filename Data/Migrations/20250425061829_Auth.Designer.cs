@@ -11,8 +11,8 @@ using Склад.Data;
 namespace Склад.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250411060811_AddSeedData")]
-    partial class AddSeedData
+    [Migration("20250425061829_Auth")]
+    partial class Auth
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,31 @@ namespace Склад.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Склад.Models.Auth.AuthUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AuthUsers");
+                });
 
             modelBuilder.Entity("Склад.Models.Category", b =>
                 {
@@ -40,18 +65,6 @@ namespace Склад.Data.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = 1,
-                            Name = "Electronics"
-                        },
-                        new
-                        {
-                            CategoryId = 2,
-                            Name = "Books"
-                        });
                 });
 
             modelBuilder.Entity("Склад.Models.Product", b =>
@@ -86,35 +99,6 @@ namespace Склад.Data.Migrations
                     b.HasIndex("SupplierId");
 
                     b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            ProductId = 1,
-                            CategoryId = 1,
-                            Name = "Laptop",
-                            Price = 1200.00m,
-                            Quantity = 0,
-                            SupplierId = 1
-                        },
-                        new
-                        {
-                            ProductId = 2,
-                            CategoryId = 1,
-                            Name = "Smartphone",
-                            Price = 800.00m,
-                            Quantity = 0,
-                            SupplierId = 1
-                        },
-                        new
-                        {
-                            ProductId = 3,
-                            CategoryId = 2,
-                            Name = "The Lord of the Rings",
-                            Price = 25.00m,
-                            Quantity = 0,
-                            SupplierId = 2
-                        });
                 });
 
             modelBuilder.Entity("Склад.Models.Supplier", b =>
@@ -137,32 +121,18 @@ namespace Склад.Data.Migrations
                     b.HasKey("SupplierId");
 
                     b.ToTable("Suppliers");
-
-                    b.HasData(
-                        new
-                        {
-                            SupplierId = 1,
-                            Email = "john.doe@acmecorp.com",
-                            Name = "Acme Corp"
-                        },
-                        new
-                        {
-                            SupplierId = 2,
-                            Email = "jane.smith@betainc.com",
-                            Name = "Beta Inc"
-                        });
                 });
 
             modelBuilder.Entity("Склад.Models.Product", b =>
                 {
                     b.HasOne("Склад.Models.Category", "Category")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Склад.Models.Supplier", "Supplier")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -170,16 +140,6 @@ namespace Склад.Data.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Supplier");
-                });
-
-            modelBuilder.Entity("Склад.Models.Category", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Склад.Models.Supplier", b =>
-                {
-                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }
