@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
 using Склад.Models;
 
 namespace Склад.Pages
@@ -21,7 +22,7 @@ namespace Склад.Pages
 
         public IActionResult OnPostDelete(int id)
         {
-            var product = _context.Products.FirstOrDefault(p => p.ProductId == id);
+            var product = _context.Products.Find(id);
             if (product != null)
             {
                 _context.Products.Remove(product);
