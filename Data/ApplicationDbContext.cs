@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Склад.Models;
+using Склад.Models.Auth;
 
 namespace Склад.Data
 {
@@ -10,5 +11,6 @@ namespace Склад.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<AuthUser> AuthUsers { get; set; }
     }
 }
