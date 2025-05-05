@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Склад.Data;
+using Склад.Hubs;
 using Склад.Models;
 
 namespace Склад.Pages
@@ -9,9 +11,11 @@ namespace Склад.Pages
     public class ProductModel : PageModel
     {
         private readonly ApplicationDbContext _context;
-        public ProductModel(ApplicationDbContext context)
+        private readonly IHubContext<ProductHub> _hubContext;
+        public ProductModel(ApplicationDbContext context, IHubContext<ProductHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
 
         [BindProperty]
@@ -42,7 +46,7 @@ namespace Склад.Pages
             }
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
@@ -61,6 +65,7 @@ namespace Склад.Pages
                 return Page();
             }
 
+
             if (Product.ProductId == 0)
             {
                 _context.Products.Add(Product);
@@ -69,7 +74,9 @@ namespace Склад.Pages
             {
                 _context.Products.Update(Product);
             }
-            _context.SaveChanges();
+
+            await _context.SaveChangesAsync();
+            await _hubContext.Clients.All.SendAsync("ReceiveProductUpdate");
             return RedirectToPage("ProductsList");
         }
     }

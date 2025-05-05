@@ -1,17 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.SignalR;
+using Склад.Hubs;
 using Склад.Models;
+using Склад.Data;
 
 namespace Склад.Pages
 {
     public class ProductsListModel : PageModel
     {
-        private readonly Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
+        private readonly IHubContext<ProductHub> _hubContext;
 
-        public ProductsListModel(Data.ApplicationDbContext context)
+        public ProductsListModel(ApplicationDbContext context, IHubContext<ProductHub> hubContext)
         {
             _context = context;
+            _hubContext = hubContext;
         }
         public List<Product> Products { get; set; }
 
@@ -20,13 +24,14 @@ namespace Склад.Pages
             Products = _context.Products.ToList();
         }
 
-        public IActionResult OnPostDelete(int id)
+        public async Task<IActionResult> OnPostDelete(int id)
         {
             var product = _context.Products.Find(id);
             if (product != null)
             {
                 _context.Products.Remove(product);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
+                await _hubContext.Clients.All.SendAsync("ReceiveProductUpdate");
             }
             return RedirectToPage();
         }

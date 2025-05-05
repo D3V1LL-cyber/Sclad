@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Склад.Data;
+using Склад.Hubs;
 using Склад.Models;
 
 
@@ -14,6 +15,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Sclad")));
 
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -25,6 +27,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.MapHub<ProductHub>("/productHub");
 
 app.UseAuthorization();
 
