@@ -37,6 +37,24 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Category">Добавить категорию</a>
                         </li>
+                        @if(User.Identity?.IsAuthenticated ?? false)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class ="nav-link dropdown-toggle" data-bs-toggle="dropdown">@User.Identity.Name</a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" asp-page="Account/Logout">Выход</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="Account/Login">Вход</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="Account/Register">Регистрация</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

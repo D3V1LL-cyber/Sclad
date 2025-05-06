@@ -17,6 +17,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddSignalR();
 
+builder.Services.AddAuthentication("Cookies")
+    .AddCookie("Cookies", options =>
+    {
+        options.LoginPath = "/Account/Login";
+    });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
