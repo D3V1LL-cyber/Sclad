@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Склад.Data;
@@ -5,6 +6,8 @@ using Склад.Models;
 
 namespace Склад.Pages
 {
+
+    [Authorize(Roles = "Admin")]
     public class CategoryModel : PageModel
     {
         private readonly ApplicationDbContext _context;
