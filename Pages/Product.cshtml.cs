@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,6 +9,7 @@ using Склад.Models;
 
 namespace Склад.Pages
 {
+    [Authorize(Roles = "Admin")]
     public class ProductModel : PageModel
     {
         private readonly ApplicationDbContext _context;
