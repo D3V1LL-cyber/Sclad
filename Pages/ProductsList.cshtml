@@ -1,37 +1,45 @@
 ﻿@page
 @model Склад.Pages.ProductsListModel
 @{
+    ViewData["Title"] = "Список товаров";
 }
 
-<h2>Products</h2>
+<div class="container">
+    <h2 class="mb-4">@ViewData["Title"]</h2>
 
-<p>
-    <a class="btn btn-primary" href="@Url.Page("Product", new { id = 0 })">Добавить новый товар</a>
-</p>
+    <p>
+        <a class="btn btn-primary" asp-page="Product" asp-route-id="0">Добавить новый товар</a>
+    </p>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-    @foreach (var product in Model.Products)
+    @if (Model.Products != null && Model.Products.Any())
     {
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">@product.Name</h5>
-                    <p class="card-text">Цена: @product.Price</p>
-                    <p class="card-text">Количество: @product.Quantity</p>
-                    <p class="card-text">Id категории: @product.CategoryId</p>
-                    <p class="card-text">Id поставщика: @product.SupplierId</p>
-
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <p class="card-text">Цена: @product.Price</p>
+                            <p class="card-text">Количество: @product.Quantity</p>
+                            <p class="card-text">Id категории: @product.CategoryId</p>
+                            <p class="card-text">Id поставщика: @product.SupplierId</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <a class="btn btn-warning" asp-page="Product" asp-route-id="@product.ProductId">Изменить</a>
+                            <form method="post" asp-page-handler="Delete" asp-route-id="@product.ProductId"
+                                  onsubmit="return confirm('Вы уверены, что хотите удалить этот товар?');">
+                                <button type="submit" class="btn btn-danger w-100">Удалить</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-footer d-flex justify-content-between">
-                    <a href="@Url.Page("Product", new { id = product.ProductId })" class="btn btn-warning">Изменить</a>
-                    <form method="post" asp-page-handler="Delete" asp-route-id="@product.ProductId"
-                          onsubmit="return confirm('Вы уверены, что хотите удалить этот товар?');"
-                          class="w-100">
-                        <button type="submit" class="btn btn-danger w-100">Удалить</button>
-                    </form>
-                </div>
-            </div>
+            }
         </div>
+    }
+    else
+    {
+        <p>Нет товаров для отображения.</p>
     }
 </div>
 
