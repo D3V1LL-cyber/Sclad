@@ -1,18 +1,21 @@
 ﻿@page
 @model Склад.Pages.SupplierModel
 @{
+    ViewData["Title"] = "Добавить поставщика";
 }
 
-<h2>Добавить поставщика</h2>
+<div class="container">
+    <h2 class="mb-4">@ViewData["Title"]</h2>
 
-<form method="post">
-    <div>
-        <label>Имя поставщика</label>
-        <input type="text" name="SupplierName" required />
-    </div>
-    <div>
-        <label>Email поставщика</label>
-        <input type="text" name="Email" required />
-    </div>
-    <button type="submit">Добавить</button>
-</form>
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Имя поставщика</label>
+            <input type="text" class="form-control" name="SupplierName" required />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email поставщика</label>
+            <input type="email" class="form-control" name="Email" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+</div>
