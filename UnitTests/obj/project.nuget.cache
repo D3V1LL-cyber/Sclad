@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iIPEYnW/vqo=",
+  "dgSpecHash": "J+PMckKCwp0=",
   "success": false,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\ss\\UnitTests\\UnitTests.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\sssssss\\UnitTests\\UnitTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\microsoft.applicationinsights\\2.22.0\\microsoft.applicationinsights.2.22.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.codecoverage\\17.13.0\\microsoft.codecoverage.17.13.0.nupkg.sha512",
@@ -25,8 +25,8 @@
     {
       "code": "NU1104",
       "level": "Error",
-      "message": "Не удалось найти проект \"C:\\Users\\User\\Desktop\\ss\\ss\\Склад.csproj\". Убедитесь, что ссылка на проект действительна и файл проекта существует.",
-      "libraryId": "C:\\Users\\User\\Desktop\\ss\\ss\\Склад.csproj",
+      "message": "Не удалось найти проект \"C:\\Users\\User\\Desktop\\sssssss\\ss\\Склад.csproj\". Убедитесь, что ссылка на проект действительна и файл проекта существует.",
+      "libraryId": "C:\\Users\\User\\Desktop\\sssssss\\ss\\Склад.csproj",
       "targetGraphs": [
         "net8.0"
       ]
