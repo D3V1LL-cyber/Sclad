@@ -5393,11 +5393,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\ScladRepo\\UnitTests\\UnitTests.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Source\\Repos\\Sclad\\UnitTests\\UnitTests.csproj",
       "projectName": "UnitTests",
-      "projectPath": "C:\\Users\\User\\source\\repos\\ScladRepo\\UnitTests\\UnitTests.csproj",
+      "projectPath": "C:\\Users\\User\\Source\\Repos\\Sclad\\UnitTests\\UnitTests.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\ScladRepo\\UnitTests\\obj\\",
+      "outputPath": "C:\\Users\\User\\Source\\Repos\\Sclad\\UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5418,8 +5418,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\User\\source\\repos\\ScladRepo\\Sclad\\Склад.csproj": {
-              "projectPath": "C:\\Users\\User\\source\\repos\\ScladRepo\\Sclad\\Склад.csproj"
+            "C:\\Users\\User\\Source\\Repos\\Sclad\\Sclad\\Склад.csproj": {
+              "projectPath": "C:\\Users\\User\\Source\\Repos\\Sclad\\Sclad\\Склад.csproj"
             }
           }
         }
